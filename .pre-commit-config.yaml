@@ -1,0 +1,34 @@
+repos:
+  # Hooks basiques pour le nettoyage du code
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace  # Supprimer les espaces en fin de ligne
+      - id: end-of-file-fixer    # Assurer une nouvelle ligne à la fin du fichier
+      - id: check-yaml           # Valider la syntaxe YAML
+
+  # Formatteur Black pour un style de code cohérent
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black                # Lancer le formatteur
+        args: [--line-length=88]
+
+  # Organiser les imports avec isort
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
+    hooks:
+      - id: isort                # Trier les imports
+
+  # Vérifier les annotations de type avec mypy
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.13.0
+    hooks:
+      - id: mypy                 # Vérification des types
+        args: ["--ignore-missing-imports"]
+
+  # Vérifier les docstrings avec pydocstyle
+  - repo: https://github.com/PyCQA/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle           # Valider le format des docstrings
